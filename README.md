@@ -1,60 +1,67 @@
-# 🛡️ Auditor Core Baseline V2
+# 🛡️ Sentinel Core: Deterministic Security Gate for CI/CD
 
-**High-Performance Security Orchestration & AI-Assisted Audit Engine**
-
-Auditor Core Baseline V2 is a **proprietary hybrid security engine** designed for deep-dive technical audits. It combines deterministic static analysis (SAST) with an advanced AI-assisted logic verification layer to detect vulnerabilities that standard tools overlook.
+**Sentinel Core** is an authoritative policy enforcement engine designed to act as a **physical security gate** in professional CI/CD pipelines. Unlike traditional scanners that provide opinions, Sentinel acts as a decision-maker: **"Should this artifact be allowed to proceed to production?"**
 
 ---
 
-## 🚀 Key Capabilities
+## ⚡ The Sentinel Philosophy: Decision vs. Opinion
 
-### 🤖 V2: AI-Assisted Logic Verification
-* **Expert Reasoning**: Integrated LLM-driven analysis to detect complex business logic flaws and cross-function vulnerabilities.
-* **Context-Aware**: Specifically tuned for distributed systems (Rust, Go, Python) and Web3/Solidity environments.
+While standard security tools generate long lists of risks, Sentinel enforces **engineering invariants**. It is built for environments that require absolute predictability and zero-tolerance for security regressions.
 
-### 📊 Baseline-Aware Security
-* **Delta Auditing**: Separates legacy technical debt from new security regressions.
-* **Signal over Noise**: Focuses on high-impact findings, reducing false positives through multi-stage validation.
-
-### 🔒 Enterprise-Grade Privacy
-* **Zero Call-Home**: The core engine operates 100% offline. No telemetry or data leakage.
-* **Local Execution**: All source code remains within the audited environment.
+| Feature | Standard Scanners | Sentinel Gate |
+| :--- | :--- | :--- |
+| **Objective** | Find Vulnerabilities | **Enforce Policies** |
+| **Result** | Risk Score / List | **ALLOW / BLOCK** |
+| **Connectivity** | Often SaaS-based | **100% Offline / Air-gapped** |
+| **Logic** | Usually Non-blocking | **Physical Exit Code Gate** |
 
 ---
 
-## 🔎 Security Stack & Orchestration
+## 🚀 Core Capabilities
 
-The engine orchestrates a suite of specialized detectors to provide 360-degree visibility:
+### 1. Deterministic Enforcement
+Every execution results in a binary state, ensuring no "silent failures" in your pipeline:
+* **ALLOW (0)**: Zero violations detected. Pipeline proceeds.
+* **BLOCK (1)**: Critical violations detected. Pipeline terminates immediately.
 
-| Engine Layer | Description |
-| :--- | :--- |
-| **Logic & AI** | Proprietary LLM-assisted verification of business logic |
-| **SAST (Web3)** | Integrated Slither & Semgrep for deep contract analysis |
-| **Infra-as-Code** | Terraform, Kubernetes, and CloudFormation hardening |
-| **Secret Detection** | High-entropy scanning for credentials and private keys |
-| **SCA Engine** | Automated supply-chain and dependency vulnerability audit |
+### 2. Artifact-Driven "DNA" Analysis
+Sentinel evaluates the integrity of your deployment artifacts before they hit the server:
+* **Infrastructure-as-Code (IaC)**: Hardening checks for Kubernetes and Terraform.
+* **Supply Chain Security**: Enforces SHA-pinning for CI actions and monitors base image integrity.
+* **Configuration Guard**: Blocks mutable tags (like `:latest`) and insecure Dockerfile patterns.
 
----
-
-## 📑 Deliverables
-
-Every audit powered by **Auditor Core V2** results in a comprehensive reporting package:
-* **Executive Summary (PDF)**: High-level risk assessment for stakeholders.
-* **Technical Dashboard (HTML)**: Deep-dive findings with CWE mapping and remediation code snippets.
-* **Automation Data (JSON)**: Machine-readable logs for CI/CD integration.
+### 3. Zero-Leakage Guarantee
+Designed for high-security environments, Sentinel forbids all network access at runtime:
+* **No Telemetry**: Your code and metadata never leave your environment.
+* **Air-Gap Ready**: Perfect for highly restricted or regulated corporate networks.
 
 ---
 
-## 🎯 Threat Model Focus
+## 🧠 Audit-First Override Model
 
-* **Primary Targets**: Supply-chain compromises, unsafe CI/CD workflows, logic-level vulnerabilities, and architectural gaps.
-* **Operational Context**: Designed for high-stakes environments where security is non-negotiable.
+Sentinel eliminates the "ignore button" culture. Any exception to a security rule must be formally documented and version-controlled within the repository.
+
+```yaml
+# sentinel.yaml - Example of an auditable exception
+overrides:
+  - rule_id: SUPPLY-001
+    justification: "Legacy node image required for test-suite compatibility"
+```
+* **Status**: Overrides are local and auditable.
+* **Effect**: The violation remains visible in reports, but the justification is permanently embedded in the audit trail.
 
 ---
 
-## 🔗 Professional Inquiries
+## 🛠️ Technical Stack & Integration
 
-This is a **proprietary tool** used exclusively by the Auditor Security Team during professional engagements.
+Sentinel is an engineer-oriented tool, designed to be hosted within a private corporate ecosystem:
+  *  **Python-Powered Rules**: Custom rules map directly to **CWE (Common Weakness Enumeration)**.
+  *  **CLI-First**: Optimized for Git hooks and CI/CD runners (GitHub Actions, GitLab CI, Jenkins).
+  *  **Immutability**: Security logic is versioned and stable—no unexpected "remote updates" to your policy.
+
+## 🔐 Professional Engagement
+
+**Sentinel Core** is a proprietary security enforcement engine by DataWizual. It is deployed as part of a comprehensive security architecture audit to ensure long-term resilience of the development lifecycle.
 
 * **Developer**: Eldor Zufarov
 * **LinkedIn**: https://www.linkedin.com/in/eldor-zufarov-31139a201/
